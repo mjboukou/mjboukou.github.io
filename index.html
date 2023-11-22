@@ -1,140 +1,360 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.15.1/devicon.min.css">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
-    <title>Michalis Boukouvalas</title>
-</head>
-<body>
-    <!-- JavaScript: Above  -->
-
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
-    <h1>
-        <nav class="navbar navbar-dark navbar-expand-lg bg-dark ">
-        <div class="container-fluid">
-        <div class="mx-4">
-            <a class="navbar-brand" href="#">Michalis Boukouvalas</a>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>My Portfolio</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="mediaqueries.css" />
+  </head>
+  <body>
+    <nav id="desktop-nav">
+      <div class="logo">Michail Boukouvalas</div>
+      <div>
+        <ul class="nav-links">
+          <li><a href="#about">About</a></li>
+          <li><a href="#experience">Experience</a></li>
+          <li><a href="#projects">Projects</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </div>
+    </nav>
+    <nav id="hamburger-nav">
+      <div class="logo">Michail Boukouvalas</div>
+      <div class="hamburger-menu">
+        <div class="hamburger-icon" onclick="toggleMenu()">
+          <span></span>
+          <span></span>
+          <span></span>
         </div>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-            data-bs-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false"
-            aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                <li class="nav-item">
-                    <a class="nav-link" href="https://github.com/mjboukou" target="_blank">Projects</a>
-                </li> 
-            </ul>
+        <div class="menu-links">
+          <li><a href="#about" onclick="toggleMenu()">About</a></li>
+          <li><a href="#experience" onclick="toggleMenu()">Experience</a></li>
+          <li><a href="#projects" onclick="toggleMenu()">Projects</a></li>
+          <li><a href="#contact" onclick="toggleMenu()">Contact</a></li>
         </div>
+      </div>
+    </nav>
+    <section id="profile">
+      <div class="section__pic-container">
+        <img src="./assets/image.png" alt="Michail Boukouvalas profile picture" />
+      </div>
+      <div class="section__text">
+        <p class="section__text__p1">Hello, I'm</p>
+        <h1 class="title">Michail Boukouvalas</h1>
+        <p class="section__text__p2">Software Engineer Student</p>
+        <div class="btn-container">
+          <button
+            class="btn btn-color-2"
+            onclick="window.open('./assets/Michalis_Boukouvalas_-_Software_Developer.pdf')"
+          >
+            Download CV
+          </button>
+          <button class="btn btn-color-1" onclick="location.href='./#contact'">
+            Contact Info
+          </button>
         </div>
-        </nav>
-    </h1>
-    <div class="container my-4 ">
-    <div class="row justify-content-center">
-        <div class="col-lg mx-2 align-self-center">
-            <div class="my-3">
-                <p> As an upcoming computer science graduate, I am passionate about technology and eager to
-                    gain professional experience in this field. I enjoy exploring new places, cultures, and cuisines,
-                    and prioritize my physical well-being through hobbies such as cycling and swimming.
-                    To gain work experience, I plan to pursue internships or entry-level positions, attend
-                    networking events, and stay up-to-date with industry news and trends. I am committed to
-                    continuous learning and professional growth in this ever-evolving field.
-                </p>
+        <div id="socials-container">
+          <img
+            src="./assets/linkedin-icon.png"
+            alt="My LinkedIn profile"
+            class="icon"
+            onclick="location.href='https://www.linkedin.com/in/michail-boukouvalas-804642230/'"
+          />
+          <img
+            src="./assets/github-logo.png"
+            alt="My Github profile"
+            class="icon"
+            onclick="location.href='https://github.com/mjboukou'"
+          />
+        </div>
+      </div>
+    </section>
+    <section id="about">
+      <p class="section__text__p1">Get To Know More</p>
+      <h1 class="title">About Me</h1>
+      <div class="section-container">
+        <div class="section__pic-container">
+          <img
+            src="./assets/paris.jpg"
+            alt="Profile picture"
+            class="about-pic"
+          />
+        </div>
+        <div class="about-details-container">
+          <div class="about-containers">
+            <div class="details-container">
+              <img
+                src="./assets/experience.png"
+                alt="Experience icon"
+                class="icon"
+              />
+              <h3>Experience</h3>
+              <p>2 moths Internship<br />Full Stack Web Developer</p>
+              <p>5+ years<br />Customer Service</p>
             </div>
-        </div>
-     </div>
-     </div>
-    
-    <!-- Inside the container created above -->
-    <div class="my-4">
-    <div class="text-center mb-4">
-        <h1>My Skills</h1>
-    </div>
-    <div class="row ">
-        <style>
-            I {
-                font-size: 4em;
-            }
-        </style>
-        <!-- Skills -->
-        <div class="col">
-            <div class="text-center">
-                <h4>Java</h4>
-            <i class="devicon-java-plain-wordmark colored"></i>
+            <div class="details-container">
+              <img
+                src="./assets/education.png"
+                alt="Education icon"
+                class="icon"
+              />
+              <h3>Education</h3>
+              <p>Upcoming Integrated Master graduate<br />Computer Science and Engineering</p>
             </div>
+          </div>
+          <div class="text-container">
+            <p>
+                    As an upcoming computer science graduate, I am passionate about 
+                    technology and eager to gain professional experience in this field.
+                    I enjoy exploring new places, cultures, and cuisines, and prioritize 
+                    my physical well-being through hobbies such as cycling and swimming.
+                    To gain work experience, I plan to pursue internships or entry-level positions,
+                    attend networking events, and stay up-to-date with industry news and trends.
+                    I am committed to continuous learning and professional growth in this ever-evolving field.
+            </p>
+          </div>
         </div>
-        <div class="col">
-            <div class="text-center">
-                <h4>NodeJs</h4>
-            <i class="devicon-nodejs-plain-wordmark colored"></i>
+      </div>
+      <img
+        src="./assets/arrow.png"
+        alt="Arrow icon"
+        class="icon arrow"
+        onclick="location.href='./#experience'"
+      />
+    </section>
+    <section id="experience">
+      <p class="section__text__p1">Explore My</p>
+      <h1 class="title">Experience</h1>
+      <div class="experience-details-container">
+        <div class="about-containers">
+          <div class="details-container">
+            <h2 class="experience-sub-title">Programming Languages</h2>
+            <div class="article-container">
+                <article>
+                    <img 
+                        src="./assets/checkmark.png" 
+                        alt="Experience icon"
+                        class="icon"
+                    />
+                    <div>
+                        <h3>HTML</h3>
+                        <p>Experienced</p>
+                    </div>
+                </article>
+                <article>
+                    <img 
+                        src="./assets/checkmark.png" 
+                        alt="Experience icon"
+                        class="icon"
+                    />
+                    <div>
+                        <h3>CSS</h3>
+                        <p>Experienced</p>
+                    </div>
+                </article>
+                <article>
+                    <img 
+                        src="./assets/checkmark.png" 
+                        alt="Experience icon"
+                        class="icon"
+                    />
+                    <div>
+                        <h3>JavaScript</h3>
+                        <p>Basic</p>
+                    </div>
+                </article>
+                <article>
+                    <img 
+                        src="./assets/checkmark.png" 
+                        alt="Experience icon"
+                        class="icon"
+                    />
+                    <div>
+                        <h3>TypeScript</h3>
+                        <p>Basic</p>
+                    </div>
+                </article>
+                <article>
+                    <img 
+                        src="./assets/checkmark.png" 
+                        alt="Experience icon"
+                        class="icon"
+                    />
+                    <div>
+                        <h3>Angular</h3>
+                        <p>Basic</p>
+                    </div>
+                </article>
+                <article>
+                    <img src="./assets/checkmark.png" 
+                        alt="Experience icon"
+                        class="icon"
+                    />
+                    <div>
+                        <h3>Python</h3>
+                        <p>Experienced</p>
+                    </div>
+                </article>
+                <article>
+                    <img 
+                        src="./assets/checkmark.png" 
+                        alt="Experience icon"
+                        class="icon"
+                    />
+                    <div>
+                        <h3>Java</h3>
+                        <p>Experienced</p>
+                    </div>
+                </article>
+                <article>
+                    <img 
+                        src="./assets/checkmark.png" 
+                        alt="Experience icon"
+                        class="icon"
+                    />
+                    <div>
+                        <h3>C</h3>
+                        <p>Experienced</p>
+                    </div>
+                </article>
+                <article>
+                    <img 
+                        src="./assets/checkmark.png" 
+                        alt="Experience icon"
+                        class="icon"
+                    />
+                    <div>
+                        <h3>Express Js</h3>
+                        <p>Basic</p>
+                    </div>
+                </article>
+                <article>
+                    <img 
+                        src="./assets/checkmark.png" 
+                        alt="Experience icon"
+                        class="icon"
+                    />
+                    <div>
+                        <h3>Node Js</h3>
+                        <p>Basic</p>
+                    </div>
+              </article>
             </div>
+          </div>
         </div>
-        <div class="col">
-            <div class="text-center">
-                <h4>Python</h4>
-                <i class="devicon-python-plain"></i>
+      </div>
+      <img
+        src="./assets/arrow.png"
+        alt="Arrow icon"
+        class="icon arrow"
+        onclick="location.href='./#projects'"
+      />
+    </section>
+    <section id="projects">
+      <p class="section__text__p1">Browse My Recent</p>
+      <h1 class="title">Projects</h1>
+      <div class="experience-details-container">
+        <div class="about-containers">
+          <div class="details-container color-container">
+            <div class="article-container">
+              <img
+                src="./assets/speech.png"
+                alt="Project 1"
+                class="project-img"
+              />
             </div>
-        </div>
-        <div class="col">
-            <div class="text-center">
-                <h4>Angular</h4>
-            <i class="devicon-angularjs-plain colored"></i>
+            <h2 class="experience-sub-title project-title">Text to Speech</h2>
+            <div class="btn-container">
+              <button
+                class="btn btn-color-2 project-btn"
+                onclick="location.href='https://github.com/mjboukou/Convert-Text-To-Speech'"
+              >
+                Github
+              </button>
             </div>
-        </div>
-        <div class="col">
-            <div class="text-center">
-                 <h4>HTML</h4>
-            <i class="devicon-html5-plain-wordmark colored"></i>
+          </div>
+          <div class="details-container color-container">
+            <div class="article-container">
+              <img
+                src="./assets/sosgame.png"
+                alt="Project 2"
+                class="project-img"
+              />
             </div>
-        </div>
-        <div class="col">
-            <div class="text-center">
-                <h4>C</h4>
-            <i class="devicon-c-plain"></i>
+            <h2 class="experience-sub-title project-title">Sos Game</h2>
+            <div class="btn-container">
+              <button
+                class="btn btn-color-2 project-btn"
+                onclick="location.href='https://github.com/mjboukou/SOS_game'"
+              >
+                Github
+              </button>
             </div>
-        </div>
-        <div class="col">
-            <div class="text-center">
-                <h4>Linux</h4>
-            <i class="devicon-linux-plain colored"></i>
+          </div>
+          <div class="details-container color-container">
+            <div class="article-container">
+              <img
+                src="./assets/movie-library.jpg"
+                alt="Project 3"
+                class="project-img"
+              />
             </div>
-        </div>
-        <div class="col">
-            <div class="text-center">
-                <h4>MYSQL</h4>
-            <i class="devicon-mysql-plain-wordmark"></i>
+            <h2 class="experience-sub-title project-title">Movie Library</h2>
+            <div class="btn-container">
+              <button
+                class="btn btn-color-2 project-btn"
+                onclick="location.href='https://github.com/mjboukou/Movie'"
+              >
+                Github
+              </button>
             </div>
+          </div>
         </div>
-    </div>
-    </div>
-    <div class="my-4">
-    <div class="text-center mb-4">
-        <h1> My Social </h1>
-    </div>
-    <div class="row ">
-        <style>
-            I {
-                font-size: 5em;
-            }
-        </style>
-        <!-- Social -->
-        <div class="col">
-            <div class="text-center">
-                <h4>My Linkedin</h4>
-                <a class="nav-link" href="https://www.linkedin.com/in/michail-boukouvalas-804642230/" target="_blank"><i class="devicon-linkedin-plain-wordmark colored"></i></a> 
-            </div>
+      </div>
+      <img
+        src="./assets/arrow.png"
+        alt="Arrow icon"
+        class="icon arrow"
+        onclick="location.href='./#contact'"
+      />
+    </section>
+    <section id="contact">
+      <p class="section__text__p1">Get in Touch</p>
+      <h1 class="title">Contact Me</h1>
+      <div class="contact-info-upper-container">
+        <div class="contact-info-container">
+          <img
+            src="./assets/email.png"
+            alt="Email icon"
+            class="icon contact-icon email-icon"
+          />
+          <p><a href="mailto:mjboukou@gmail.com">mjboukou@gmail.com.com</a></p>
         </div>
-        <div class="col">
-            <div class="text-center">
-                <i class="devicon-google-plain-wordmark"></i>
-                <h4>mjboukou@gmail.com</h4>
-            </div>
+        <div class="contact-info-container">
+          <img
+            src="./assets/linkedin-icon.png"
+            alt="LinkedIn icon"
+            class="icon contact-icon"
+          />
+          <p><a href="https://www.linkedin.com/in/michail-boukouvalas-804642230/">LinkedIn</a></p>
         </div>
-    </div>
-    </div>
-</body>
+      </div>
+    </section>
+    <footer>
+      <nav>
+        <div class="nav-links-container">
+          <ul class="nav-links">
+            <li><a href="#about">About</a></li>
+            <li><a href="#experience">Experience</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#contact">Contact</a></li>
+          </ul>
+        </div>
+      </nav>
+      <p>Copyright &#169; 2023 Michail Boukouvalas. All Rights Reserved.</p>
+    </footer>
+    <script src="script.js"></script>
+  </body>
 </html>
