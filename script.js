@@ -12,6 +12,9 @@ window.addEventListener("load", () => {
   const hellos = [
     "Hello",
     "Hola",
+    "Olá",
+    "Salut",
+    "Hei",
     "Bonjour",
     "Ciao",
     "Hallo",
@@ -42,4 +45,5 @@ window.addEventListener("load", () => {
     intro.style.display = "none";
   }, 6000); // adjust if needed
 });
+
 
