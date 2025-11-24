@@ -17,7 +17,7 @@ window.addEventListener("load", () => {
     "Hallo",
     "こんにちは",
     "Γεια"
-];
+    ];
 
   let index = 0;
 
@@ -42,3 +42,4 @@ window.addEventListener("load", () => {
     intro.style.display = "none";
   }, 6000); // adjust if needed
 });
+
