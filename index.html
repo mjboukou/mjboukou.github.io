@@ -1,208 +1,267 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="mode-2d">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Michail Boukouvalas — Software Engineer</title>
+<meta name="description" content="Portfolio of Michail Boukouvalas, software engineer based in Greece.">
+<script>
+  // Pick the 3D computer or the flat desktop before anything renders.
+  (function () {
+    var mode = '3d';
+    try {
+      var c = document.createElement('canvas');
+      if (!(c.getContext('webgl2') || c.getContext('webgl'))) mode = '2d';
+    } catch (e) { mode = '2d'; }
+    if (window.matchMedia('(max-width: 760px), (max-height: 520px), (prefers-reduced-motion: reduce)').matches) mode = '2d';
+    if (/[?&]flat\b/.test(location.search)) mode = '2d';
+    document.documentElement.className = 'js mode-' + mode;
+  })();
+</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,500&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles.css">
+<script type="importmap">
+  {
+    "imports": {
+      "three": "https://cdn.jsdelivr.net/npm/three@0.169.0/build/three.module.js",
+      "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.169.0/examples/jsm/"
+    }
+  }
+</script>
 </head>
 <body>
 
-<nav>
-  <div class="nav-inner">
-    <a class="nav-name" href="#top">M. Boukouvalas</a>
-    <ul class="nav-links">
-      <li><a href="#about">About</a></li>
-      <li><a href="#skills">Skills</a></li>
-      <li><a href="#projects">Projects</a></li>
-      <li><a href="#contact">Contact</a></li>
+<div id="stage" aria-hidden="true"></div>
+
+<div class="screen" id="screen">
+
+  <div class="boot" aria-hidden="true">
+    <p>MB-BIOS v26.09 &nbsp;(c) 2026 Michail Boukouvalas</p>
+    <p>Checking memory ............ OK</p>
+    <p>Loading about_me ........... OK</p>
+    <p>Loading projects ........... OK</p>
+    <p>Starting desktop<span class="cursor">_</span></p>
+  </div>
+
+  <main class="desktop" id="desktop">
+
+    <div class="widget">
+      <p class="widget-eyebrow">Portfolio</p>
+      <h1 class="widget-name">Michail Boukouvalas</h1>
+      <p class="widget-role">Software engineer · Greece</p>
+      <p class="widget-hint">Click a file to open it</p>
+    </div>
+
+    <ul class="icons" aria-label="Desktop files">
+      <li>
+        <a class="icon" href="#win-intro" data-window="win-intro">
+          <svg class="icon-img" viewBox="0 0 48 56" aria-hidden="true"><path class="doc" d="M4 2h28l12 12v38a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2z"/><path class="fold" d="M32 2v10a2 2 0 0 0 2 2h10z"/><path class="lines" d="M10 24h26M10 31h26M10 38h18"/><rect class="badge" x="8" y="42" width="18" height="8" rx="1.5"/></svg>
+          <span>Quick_intro.txt</span>
+        </a>
+      </li>
+      <li>
+        <a class="icon" href="#win-about" data-window="win-about">
+          <svg class="icon-img" viewBox="0 0 48 56" aria-hidden="true"><path class="doc" d="M4 2h28l12 12v38a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2z"/><path class="fold" d="M32 2v10a2 2 0 0 0 2 2h10z"/><path class="lines" d="M10 24h26M10 31h26M10 38h26M10 45h14"/></svg>
+          <span>About_me.txt</span>
+        </a>
+      </li>
+      <li>
+        <a class="icon" href="#win-projects" data-window="win-projects">
+          <svg class="icon-img" viewBox="0 0 48 56" aria-hidden="true"><path class="doc" d="M4 2h28l12 12v38a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2z"/><path class="fold" d="M32 2v10a2 2 0 0 0 2 2h10z"/><path class="lines" d="M10 24h8M22 24h14M10 31h8M22 31h14M10 38h8M22 38h14M10 45h8M22 45h10"/></svg>
+          <span>Projects.txt</span>
+        </a>
+      </li>
+      <li>
+        <a class="icon" href="#win-contact" data-window="win-contact">
+          <svg class="icon-img" viewBox="0 0 48 56" aria-hidden="true"><path class="doc" d="M4 2h28l12 12v38a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2z"/><path class="fold" d="M32 2v10a2 2 0 0 0 2 2h10z"/><path class="lines" d="M10 24h26M10 31h20"/><path class="envelope" d="M10 38h26v12H10zM10 38l13 7 13-7"/></svg>
+          <span>Contact.txt</span>
+        </a>
+      </li>
+      <li>
+        <a class="icon" href="#win-photos" data-window="win-photos">
+          <svg class="icon-img" viewBox="0 0 48 56" aria-hidden="true"><rect class="photo-frame" x="2" y="8" width="44" height="40" rx="3"/><circle class="sun" cx="33" cy="19" r="4.5"/><path class="hills" d="M5 45l13-16 9 10 6-6 10 12z"/></svg>
+          <span>Me.jpg</span>
+        </a>
+      </li>
+      <li>
+        <a class="icon" href="assets/Michalis_Boukouvalas_-_Software_Developer.pdf" download>
+          <svg class="icon-img" viewBox="0 0 48 56" aria-hidden="true"><path class="doc" d="M4 2h28l12 12v38a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2z"/><path class="fold" d="M32 2v10a2 2 0 0 0 2 2h10z"/><rect class="pdf" x="6" y="30" width="30" height="14" rx="2"/><text class="pdf-text" x="21" y="40.5" text-anchor="middle">PDF</text></svg>
+          <span>My_CV.pdf</span>
+        </a>
+      </li>
     </ul>
-  </div>
-</nav>
 
-<header class="hero" id="top">
-  <div class="wrap hero-grid">
-    <figure class="id-photo">
-      <img src="https://mjboukou.github.io/assets/image.png" alt="Michail Boukouvalas">
-      <figcaption>Holder photograph</figcaption>
-    </figure>
-    <div>
-      <p class="eyebrow">Passport to software engineering</p>
-      <h1 class="title">Michail Boukouvalas</h1>
-      <p class="role">Software engineer, still stamping pages</p>
-
-      <dl class="datafields">
-        <div><dt>Occupation</dt><dd>Software Engineer Student</dd></div>
-        <div><dt>Currently based</dt><dd>Greece</dd></div>
-        <div><dt>Status</dt><dd>Seeking entry-level role</dd></div>
-        <div><dt>Also fluent in</dt><dd>New places &amp; cuisines</dd></div>
-      </dl>
-
-      <div class="cta-row">
-        <a class="btn btn-stamp" href="assets/Michalis_Boukouvalas_-_Software_Developer.pdf" download>Download CV</a>
-        <a class="btn btn-outline" href="#contact">Contact info</a>
+    <!-- Notepad windows -->
+    <section class="window notepad" id="win-intro" aria-labelledby="win-intro-title" style="--x:190px;--y:160px;--w:620px;--h:580px">
+      <header class="titlebar">
+        <span class="title" id="win-intro-title">Quick_intro.txt — Notepad</span>
+        <span class="controls">
+          <button class="ctl ctl-min" type="button" aria-label="Minimize">&#8211;</button>
+          <a class="ctl ctl-close" href="#" aria-label="Close">&#10005;</a>
+        </span>
+      </header>
+      <div class="menubar" aria-hidden="true"><span>File</span><span>Edit</span><span>Format</span><span>View</span><span>Help</span></div>
+      <div class="paper" tabindex="-1">
+        <p class="big">Hi, I'm Michail Boukouvalas.</p>
+        <p>I'm a software engineer from Greece, a few courses away from finishing my integrated master in computer science &amp; engineering. I've completed my military service and I'm looking for an entry-level role where I can grow while contributing to a team.</p>
+        <p class="rule">----------------------------------------</p>
+        <p>
+          Occupation ..... Software engineer student<br>
+          Based in ....... Greece<br>
+          Status ......... Seeking entry-level role<br>
+          Also fluent in . New places &amp; cuisines
+        </p>
+        <p class="rule">----------------------------------------</p>
+        <p>Open the other files on the desktop to learn more, or grab my CV:</p>
+        <p><a class="txt-btn" href="assets/Michalis_Boukouvalas_-_Software_Developer.pdf" download>[ Download CV ]</a> <a class="txt-btn" href="#win-contact" data-window="win-contact">[ Contact info ]</a></p>
       </div>
-    </div>
-  </div>
-</header>
+      <footer class="statusbar" aria-hidden="true"><span>Ln 1, Col 1</span><span>100%</span><span>UTF-8</span></footer>
+    </section>
 
-<section class="section" id="about">
-  <div class="wrap">
-    <div class="section-head">
-      <p class="eyebrow">Page 2</p>
-      <h2>About me</h2>
-    </div>
-    <div class="about-grid">
-      <div class="about-photo">
-        <img src="https://mjboukou.github.io/assets/paris.jpg" alt="Michail on a trip to Paris">
-        <div class="postmark">Paris<br>2024</div>
-      </div>
-      <div class="about-text">
+    <section class="window notepad" id="win-about" aria-labelledby="win-about-title" style="--x:300px;--y:40px;--w:640px;--h:620px">
+      <header class="titlebar">
+        <span class="title" id="win-about-title">About_me.txt — Notepad</span>
+        <span class="controls">
+          <button class="ctl ctl-min" type="button" aria-label="Minimize">&#8211;</button>
+          <a class="ctl ctl-close" href="#" aria-label="Close">&#10005;</a>
+        </span>
+      </header>
+      <div class="menubar" aria-hidden="true"><span>File</span><span>Edit</span><span>Format</span><span>View</span><span>Help</span></div>
+      <div class="paper" tabindex="-1">
+        <h2># About me</h2>
         <p>I'm a computer science student, only a few courses away from finishing my degree, and last year I completed my military service. I'm excited to take the next step and start my career in technology.</p>
-        <p>I enjoy solving problems, learning new skills, and working with others — I'm looking for an entry-level role where I can grow while contributing to a team. Outside of code, I spend my free time exploring new places, cultures, and cuisines.</p>
+        <p>I enjoy solving problems, learning new skills, and working with others. I'm looking for an entry-level role where I can grow while contributing to a team. Outside of code, I spend my free time exploring new places, cultures, and cuisines.</p>
 
-        <div class="stamps">
-          <div class="stamp-card">
-            <p class="stamp-len">2 months</p>
-            <h3>Full stack web developer</h3>
-            <p class="stamp-sub">Internship</p>
-          </div>
-          <div class="stamp-card">
-            <p class="stamp-len">5+ years</p>
-            <h3>Customer service</h3>
-            <p class="stamp-sub">Client-facing roles</p>
-          </div>
-          <div class="stamp-card">
-            <p class="stamp-len">In progress</p>
-            <h3>Integrated master</h3>
-            <p class="stamp-sub">Computer science &amp; engineering</p>
-          </div>
-          <div class="stamp-card">
-            <p class="stamp-len">Completed</p>
-            <h3>Military service</h3>
-            <p class="stamp-sub">Greece</p>
-          </div>
-        </div>
+        <h2># Experience &amp; education</h2>
+        <ul class="txt-list">
+          <li><b>Full stack web developer</b> — internship, 2 months</li>
+          <li><b>Customer service</b> — client-facing roles, 5+ years</li>
+          <li><b>Integrated master</b> — computer science &amp; engineering, in progress</li>
+          <li><b>Military service</b> — Greece, completed</li>
+        </ul>
+
+        <h2># Skills</h2>
+        <pre class="skills">Frontend
+  HTML .......... ■■■■
+  CSS ........... ■■■■
+  JavaScript .... ■■□□
+  TypeScript .... ■■□□
+  Angular ....... ■■□□
+
+Backend
+  Node.js ....... ■■□□
+  Express.js .... ■■□□
+
+Core languages
+  Python ........ ■■■■
+  Java .......... ■■■■
+  C ............. ■■■■</pre>
       </div>
-    </div>
-  </div>
-</section>
+      <footer class="statusbar" aria-hidden="true"><span>Ln 1, Col 1</span><span>100%</span><span>UTF-8</span></footer>
+    </section>
 
-<section class="section section-alt" id="skills">
-  <div class="wrap">
-    <div class="section-head">
-      <p class="eyebrow">Boarding pass</p>
-      <h2>Skills &amp; tools</h2>
-    </div>
-
-    <div class="ticket-groups">
-      <div class="ticket">
-        <div class="ticket-main">
-          <h3>Frontend</h3>
-          <div class="skill-row"><span>HTML</span><span class="gauge"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span></span></div>
-          <div class="skill-row"><span>CSS</span><span class="gauge"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span></span></div>
-          <div class="skill-row"><span>JavaScript</span><span class="gauge"><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span></span></div>
-          <div class="skill-row"><span>TypeScript</span><span class="gauge"><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span></span></div>
-          <div class="skill-row"><span>Angular</span><span class="gauge"><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span></span></div>
-        </div>
-        <div class="ticket-stub">GATE A</div>
-      </div>
-
-      <div class="ticket">
-        <div class="ticket-main">
-          <h3>Backend</h3>
-          <div class="skill-row"><span>Node.js</span><span class="gauge"><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span></span></div>
-          <div class="skill-row"><span>Express.js</span><span class="gauge"><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span></span></div>
-        </div>
-        <div class="ticket-stub">GATE B</div>
-      </div>
-
-      <div class="ticket">
-        <div class="ticket-main">
-          <h3>Core languages</h3>
-          <div class="skill-row"><span>Python</span><span class="gauge"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span></span></div>
-          <div class="skill-row"><span>Java</span><span class="gauge"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span></span></div>
-          <div class="skill-row"><span>C</span><span class="gauge"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span></span></div>
-        </div>
-        <div class="ticket-stub">GATE C</div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section class="section" id="projects">
-  <div class="wrap">
-    <div class="section-head">
-      <p class="eyebrow">Page 3</p>
-      <h2>Projects</h2>
-    </div>
-    <div class="postcards">
-      <article class="postcard">
-        <div class="postcard-img"><img src="https://mjboukou.github.io/assets/Mylos%20logo%20pic.png" alt="Mylos Kouiasas project"></div>
-        <div class="postcard-body">
-          <h3>Mylos Kouiasas</h3>
+    <section class="window notepad" id="win-projects" aria-labelledby="win-projects-title" style="--x:420px;--y:60px;--w:620px;--h:560px">
+      <header class="titlebar">
+        <span class="title" id="win-projects-title">Projects.txt — Notepad</span>
+        <span class="controls">
+          <button class="ctl ctl-min" type="button" aria-label="Minimize">&#8211;</button>
+          <a class="ctl ctl-close" href="#" aria-label="Close">&#10005;</a>
+        </span>
+      </header>
+      <div class="menubar" aria-hidden="true"><span>File</span><span>Edit</span><span>Format</span><span>View</span><span>Help</span></div>
+      <div class="paper" tabindex="-1">
+        <h2># Projects</h2>
+        <div class="project">
+          <h3>01. Mylos Kouiasas</h3>
           <p>A website project — add a short line here about what it does and who it's for.</p>
-          <a class="postcard-link" href="https://github.com/mjboukou/Mylos-Kouiasas-Website" target="_blank" rel="noopener">View on GitHub</a>
+          <p><a href="https://github.com/mjboukou/Mylos-Kouiasas-Website" target="_blank" rel="noopener">→ View on GitHub</a></p>
         </div>
-      </article>
-      <article class="postcard">
-        <div class="postcard-img"><img src="https://mjboukou.github.io/assets/speech.png" alt="Text to Speech project"></div>
-        <div class="postcard-body">
-          <h3>Text to speech</h3>
+        <div class="project">
+          <h3>02. Text to speech</h3>
           <p>A tool that converts written text into spoken audio.</p>
-          <a class="postcard-link" href="https://github.com/mjboukou/Convert-Text-To-Speech" target="_blank" rel="noopener">View on GitHub</a>
+          <p><a href="https://github.com/mjboukou/Convert-Text-To-Speech" target="_blank" rel="noopener">→ View on GitHub</a></p>
         </div>
-      </article>
-      <article class="postcard">
-        <div class="postcard-img"><img src="https://mjboukou.github.io/assets/sosgame.png" alt="Sos Game project"></div>
-        <div class="postcard-body">
-          <h3>Sos game</h3>
+        <div class="project">
+          <h3>03. Sos game</h3>
           <p>A classic two-player strategy game built from scratch.</p>
-          <a class="postcard-link" href="https://github.com/mjboukou/SOS_game" target="_blank" rel="noopener">View on GitHub</a>
+          <p><a href="https://github.com/mjboukou/SOS_game" target="_blank" rel="noopener">→ View on GitHub</a></p>
         </div>
-      </article>
-      <article class="postcard">
-        <div class="postcard-img"><img src="https://mjboukou.github.io/assets/movie-library.jpg" alt="Movie Library project"></div>
-        <div class="postcard-body">
-          <h3>Movie library</h3>
+        <div class="project">
+          <h3>04. Movie library</h3>
           <p>A catalog app for browsing and organizing movies.</p>
-          <a class="postcard-link" href="https://github.com/mjboukou/Movie" target="_blank" rel="noopener">View on GitHub</a>
+          <p><a href="https://github.com/mjboukou/Movie" target="_blank" rel="noopener">→ View on GitHub</a></p>
         </div>
-      </article>
-    </div>
+        <p>More on <a href="https://github.com/mjboukou" target="_blank" rel="noopener">github.com/mjboukou</a></p>
+      </div>
+      <footer class="statusbar" aria-hidden="true"><span>Ln 1, Col 1</span><span>100%</span><span>UTF-8</span></footer>
+    </section>
+
+    <section class="window notepad" id="win-contact" aria-labelledby="win-contact-title" style="--x:470px;--y:150px;--w:520px;--h:400px">
+      <header class="titlebar">
+        <span class="title" id="win-contact-title">Contact.txt — Notepad</span>
+        <span class="controls">
+          <button class="ctl ctl-min" type="button" aria-label="Minimize">&#8211;</button>
+          <a class="ctl ctl-close" href="#" aria-label="Close">&#10005;</a>
+        </span>
+      </header>
+      <div class="menubar" aria-hidden="true"><span>File</span><span>Edit</span><span>Format</span><span>View</span><span>Help</span></div>
+      <div class="paper" tabindex="-1">
+        <h2># Get in touch</h2>
+        <p>Open to entry-level software engineering roles. Feel free to reach out.</p>
+        <p class="contact-lines">
+          Email ..... <a href="mailto:mjboukou@gmail.com">mjboukou@gmail.com</a><br>
+          LinkedIn .. <a href="https://www.linkedin.com/in/michail-boukouvalas-804642230/" target="_blank" rel="noopener">michail-boukouvalas</a><br>
+          GitHub .... <a href="https://github.com/mjboukou" target="_blank" rel="noopener">github.com/mjboukou</a><br>
+          CV ........ <a href="assets/Michalis_Boukouvalas_-_Software_Developer.pdf" download>My_CV.pdf</a>
+        </p>
+      </div>
+      <footer class="statusbar" aria-hidden="true"><span>Ln 1, Col 1</span><span>100%</span><span>UTF-8</span></footer>
+    </section>
+
+    <section class="window photos" id="win-photos" aria-labelledby="win-photos-title" style="--x:250px;--y:90px;--w:720px;--h:520px">
+      <header class="titlebar">
+        <span class="title" id="win-photos-title">Me.jpg — Photos</span>
+        <span class="controls">
+          <button class="ctl ctl-min" type="button" aria-label="Minimize">&#8211;</button>
+          <a class="ctl ctl-close" href="#" aria-label="Close">&#10005;</a>
+        </span>
+      </header>
+      <div class="photo-body" tabindex="-1">
+        <figure>
+          <img src="assets/image.png" alt="Michail Boukouvalas" loading="lazy">
+          <figcaption>Me</figcaption>
+        </figure>
+        <figure>
+          <img src="assets/paris.jpg" alt="Michail on a trip to Paris" loading="lazy">
+          <figcaption>Paris, 2024</figcaption>
+        </figure>
+      </div>
+    </section>
+
+  </main>
+
+  <div class="taskbar">
+    <button class="start" type="button" aria-expanded="false" aria-controls="start-menu"><span class="start-logo">MB</span> Start</button>
+    <div class="tasks" aria-label="Open windows"></div>
+    <span class="tray"><span class="tray-lang">EN</span><time class="clock"></time></span>
   </div>
-</section>
 
-<section class="section section-alt" id="contact">
-  <div class="wrap contact-wrap">
-    <div class="section-head contact-head">
-      <p class="eyebrow">Last page</p>
-      <h2>Get in touch</h2>
-    </div>
-    <p class="contact-lede">Open to entry-level software engineering roles — feel free to reach out.</p>
-    <div class="contact-row">
-      <a class="contact-item" href="mailto:mjboukou@gmail.com">
-        <img src="https://mjboukou.github.io/assets/email.png" alt="">
-        mjboukou@gmail.com
-      </a>
-      <a class="contact-item" href="https://www.linkedin.com/in/michail-boukouvalas-804642230/" target="_blank" rel="noopener">
-        <img src="https://mjboukou.github.io/assets/linkedin-icon.png" alt="">
-        LinkedIn
-      </a>
-      <a class="contact-item" href="https://github.com/mjboukou" target="_blank" rel="noopener">
-        <img src="https://mjboukou.github.io/assets/github-logo.png" alt="">
-        GitHub
-      </a>
-    </div>
-  </div>
-</section>
+  <nav class="start-menu" id="start-menu" hidden aria-label="Start menu">
+    <p class="start-head">Michail Boukouvalas</p>
+    <a href="#win-intro" data-window="win-intro">Quick introduction</a>
+    <a href="#win-about" data-window="win-about">About me</a>
+    <a href="#win-projects" data-window="win-projects">Projects</a>
+    <a href="#win-contact" data-window="win-contact">Contact info</a>
+    <a href="assets/Michalis_Boukouvalas_-_Software_Developer.pdf" download>Download CV</a>
+    <p class="start-foot">© 2026 Michail Boukouvalas</p>
+  </nav>
+</div>
 
-<footer>
-  Copyright © 2026 Michail Boukouvalas. All rights reserved.
-</footer>
+<button class="view-toggle" id="view-toggle" type="button" hidden>View the desk</button>
 
+<script src="js/desktop.js"></script>
+<script type="module" src="js/scene.js" onerror="Desktop.fallbackTo2D()"></script>
 </body>
 </html>
